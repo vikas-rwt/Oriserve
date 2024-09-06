@@ -2,7 +2,7 @@ pipeline{
     agent any 
     environment {
     AWS_DEFAULT_REGION = "us-east-1"
-    THE_BUTLER_SAYS_SO = credentials('AWS-Jenkins')
+    AN_ACCESS_KEY = credentials('AWS-Jenkins')
     }
     stages {
         stage ('Build'){
@@ -19,7 +19,7 @@ pipeline{
         stage ('Deploy to S3'){ 
             steps{ 
                 echo "Deploying" 
-                sh ' aws s3 cp ./index.html s3://oriserve-vikas-web-app '
+                sh 'aws s3 cp ./index.html s3://oriserve-vikas-web-app'
             } 
         }
 
