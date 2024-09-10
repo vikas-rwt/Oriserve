@@ -18,11 +18,11 @@ pipeline{
         }
         stage ('Deploy to S3'){ 
             steps{ 
-                echo "Deploying" 
-                sh 'aws s3 cp ./index.html s3://oriserve-vikas-web-app'
+                withAWS(region: 'us-east-1', credentials: '') {
+                    sh 'ls -la'
+                    sh 'aws s3 cp ./index.html s3://oriserve-vikas-web-app --recursive'
+                }
             } 
-        }
-
     }
 
     post{
