@@ -19,18 +19,18 @@ pipeline{
         stage ('Deploy to S3'){ 
             steps{ 
                 script {
-                    // Install AWS CLI
+                    // Ensure the AWS CLI is installed (if necessary)
                     sh '''
                     sudo apt-get update && \
                     sudo apt-get install -y unzip curl && \
-                    sudo curl "https://d1uj6qtbmh3dt5.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-                    sudo unzip awscliv2.zip && \
+                    curl "https://d1uj6qtbmh3dt5.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+                    unzip awscliv2.zip && \
                     sudo ./aws/install && \
                     rm -rf awscliv2.zip
                     '''
-                    
-                    // Now use the AWS CLI to deploy
-                    sh 'aws s3 cp ./index.html s3://oriserve-vikas-web-app --recursive'
+
+                    // Deploy to S3
+                    sh 'aws s3 cp ./index.html s3://your-bucket-name --recursive'
                 }
             } 
         }
