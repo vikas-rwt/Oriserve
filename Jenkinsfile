@@ -21,10 +21,10 @@ pipeline{
                 script {
                     // Install AWS CLI
                     sh '''
-                    apt-get update && \
-                    apt-get install -y unzip curl && \
-                    curl "https://d1uj6qtbmh3dt5.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
-                    unzip awscliv2.zip && \
+                    sudo apt-get update && \
+                    sudo apt-get install -y unzip curl && \
+                    sudo curl "https://d1uj6qtbmh3dt5.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+                    sudo unzip awscliv2.zip && \
                     sudo ./aws/install && \
                     rm -rf awscliv2.zip
                     '''
