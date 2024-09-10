@@ -23,15 +23,6 @@ pipeline{
                     sh 'aws s3 cp ./index.html s3://oriserve-vikas-web-app --recursive'
                 }
             } 
-    }
-
-    post{
-        success {
-            echo "success"
-        }
-        failure {
-            echo "failure"
         }
     }
-}
 }
